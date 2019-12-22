@@ -1,3 +1,5 @@
+yum install wget
+yum install nano
 #!/bin/bash
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -764,14 +766,11 @@ sysctl -p "$FILE"
 
 #install ntp server
 timedatectl status
-sudo timedatectl set-timezone Asia/Kolkata
-sudo yum install ntp 
+timedatectl set-timezone Asia/Kolkata
+yum install ntp 
 timedatectl status
 
 #swappiness
-sudo su
-echo 1 > /proc/sys/vm/swappiness
+sudo echo 1 > /proc/sys/vm/swappiness
 exit
-
-sudo shutdown -r now
 
