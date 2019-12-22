@@ -1,0 +1,15 @@
+sudo su
+
+rpm https://github.com/juber-github/hadoop/blob/master/pre-requisite.sh
+
+sh pre-requisite.sh
+
+sudo shutdown -r now
+
+#connect back to node
+
+wget https://archive.cloudera.com/cm5/installer/5.6.0/cloudera-manager-installer.bin
+
+chmod +x cloudera-manager-installer.bin
+
+sudo ./cloudera-manager-installer.bin  
