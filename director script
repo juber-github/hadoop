@@ -1,0 +1,75 @@
+Script is ready and working however today guess have appeared at my place need to attend them but you all need to follow these steps.Please use this image. ami-9887c6e7 CentOS 7 (x86_64) - with Updates HVM, To Create your own Snapshot.
+
+
+sudo su                                   (is better idea)
+sudo cp /home/centos/.ssh/authorized_keys  /root
+
+ssh -i "security.pem" centos@ec2-123-345-122-241.compute-1.amazonaws.com
+
+sudo yum install wget -y
+
+sudo yum install nano -y (if you will)
+
+# install JDK
+
+wget https://s3.amazonaws.com/cloud-age/jdk-8u162-linux-x64.rpm
+
+sudo rpm -Uv jdk-8u162-linux-x64.rpm
+
+
+#check Prerequesites
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/check-pre-req.sh
+
+
+# Run all Prerequesites
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_iptables.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_ipv6.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_selinux.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_thp.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_lzo.sh
+
+wget  https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_nscd.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_ntp.sh
+
+wget  https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_tools.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/remove_tuned.sh
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/tune_kernel.sh
+
+
+
+#check Prerequesites again
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/check-pre-req.sh
+
+
+Do Not worry about the dns message due to the hostname is controlled by aws.
+
+
+# save this image in your ami- your AMI ———you - will - not be able to make it public.
+
+
+# Run Cloudera Director Script.
+
+
+https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_clouderadirector.sh
+
+sh install_clouderadirector.sh
+
+# Check the path :  cd /usr/lib64/cloudera-director/client
+
+download the file aws.simple.conf
+
+scp -i security.pem centos@public-ip-address:/usr/lib64/cloudera-director/client/aws.simple.conf ./
+
+Option #1 GuI in the browser     ec2-54-175-122-241.compute-1.amazonaws.com:7189
+
+Option #2 CLI in the Terminal configure aws.simple.conf and fire prelaunch.sh
